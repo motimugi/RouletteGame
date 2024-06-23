@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roulette Game</title>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
+        #unityContainer { width: 100%; height: 100%; }
+    </style>
+</head>
+<body>
+    <div id="unityContainer"></div>
+    <script>
+        var buildUrl = "Build";
+        var loaderUrl = buildUrl + "/Build.loader.js";
+        var config = {
+            dataUrl: buildUrl + "/Build.data",
+            frameworkUrl: buildUrl + "/Build.framework.js",
+            codeUrl: buildUrl + "/Build.wasm",
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "DefaultCompany",
+            productName: "RouletteGame",
+            productVersion: "1.0",
+        };
+
+        var container = document.querySelector("#unityContainer");
+        var canvas = document.createElement("canvas");
+        container.appendChild(canvas);
+
+        var script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = () => {
+            createUnityInstance(canvas, config);
+        };
+        document.body.appendChild(script);
+    </script>
+</body>
+</html>
